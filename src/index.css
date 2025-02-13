@@ -1,0 +1,6 @@
+@import url('./components/App/App.css');
+@import url('./components/Footer/Footer.css');
+@import url('./components/NewTaskForm/NewTaskForm.css');
+@import url('./components/Task/Task.css');
+@import url('./components/TaskList/TaskList.css');
+@import url('./components/TasksFilter/TaskFilter.css');
