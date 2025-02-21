@@ -6,16 +6,11 @@ import NewTaskForm from "../NewTaskForm/NewTaskForm";
 
 const App = () => {
   const [newTask, setNewTask] = useState("");
-  const [todos, setTodos] = useState(["WebCore", "JavaScript", "React Js"]);
-  const [checked, setChecked] = useState(false);
+  const [todos, setTodos] = useState(["WebCore", "JavaScript", "React JS"]);
 
   const handleChangeInput = (event) => {
     setNewTask(event.target.value);
   };
-
-  // const handleClick = (event) => {
-  //   event.target.closest("li").classList.toggle("completed");
-  // };
 
   const handleRemove = (taskToRemove) => {
     const newList = todos.filter((task) => task !== taskToRemove);
@@ -25,11 +20,7 @@ const App = () => {
   return (
     <>
       <NewTaskForm value={newTask} onChange={handleChangeInput} />
-      <ToDoList
-        todos={todos}
-        // handleClick={handleClick}
-        handleRemove={handleRemove}
-      />
+      <ToDoList todos={todos} handleRemove={handleRemove} />
       <Footer />
     </>
   );
