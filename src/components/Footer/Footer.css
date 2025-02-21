@@ -16,9 +16,7 @@
 
 
 .footer:before {
-  content: '';
-  position: absolute;
-  z-index: -1;
+
   background-color: white;
   top: 362px;
   width: 550px;

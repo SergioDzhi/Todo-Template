@@ -2,13 +2,14 @@ const NewTaskForm = (props) => {
   const { value, onChange } = props;
 
   return (
-    <header className='header'>
+    <header className="header">
       <h1>todos</h1>
+
       <input
-        className='new-todo'
-        placeholder='What needs to be done?'
+        className="new-todo"
+        placeholder="What needs to be done?"
         autoFocus
-        name='input'
+        name="input"
         value={value}
         onChange={onChange}
       />
