@@ -1,5 +1,11 @@
-const NewTaskForm = (props) => {
-  const { value, onChange } = props;
+import { useState } from "react";
+
+const NewTaskForm = () => {
+  const [newTask, setNewTask] = useState("");
+
+  const handleChangeInput = (event) => {
+    setNewTask(event.target.value);
+  };
 
   return (
     <header className="header">
@@ -10,8 +16,8 @@ const NewTaskForm = (props) => {
         placeholder="What needs to be done?"
         autoFocus
         name="input"
-        value={value}
-        onChange={onChange}
+        value={newTask}
+        onChange={handleChangeInput}
       />
     </header>
   );

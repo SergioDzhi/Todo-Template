@@ -5,12 +5,7 @@ import ToDoList from "../ToDoList/ToDoList";
 import NewTaskForm from "../NewTaskForm/NewTaskForm";
 
 const App = () => {
-  const [newTask, setNewTask] = useState("");
   const [todos, setTodos] = useState(["WebCore", "JavaScript", "React JS"]);
-
-  const handleChangeInput = (event) => {
-    setNewTask(event.target.value);
-  };
 
   const handleRemove = (taskToRemove) => {
     const newList = todos.filter((task) => task !== taskToRemove);
@@ -19,7 +14,7 @@ const App = () => {
 
   return (
     <>
-      <NewTaskForm value={newTask} onChange={handleChangeInput} />
+      <NewTaskForm />
       <ToDoList todos={todos} handleRemove={handleRemove} />
       <Footer />
     </>
