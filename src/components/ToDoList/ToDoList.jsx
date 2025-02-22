@@ -1,7 +1,7 @@
 import Task from "../Task/Task";
 
 const ToDoList = (props) => {
-  const { todos, handleClick, handleRemove } = props;
+  const { todos, handleRemove } = props;
 
   return (
     <section className="main">
@@ -9,7 +9,6 @@ const ToDoList = (props) => {
         {todos.map((todo, index) => (
           <Task
             key={index}
-            handleClick={handleClick}
             handleRemove={handleRemove}
             todo={todo}
             index={index}
