@@ -1,7 +1,7 @@
 import Task from "../Task/Task";
 
 const ToDoList = (props) => {
-  const { todos, handleRemove } = props;
+  const { todos, handleRemove, handleSubmit } = props;
 
   return (
     <section className="main">
@@ -12,6 +12,7 @@ const ToDoList = (props) => {
             handleRemove={handleRemove}
             todo={todo}
             index={index}
+            onSubmit={handleSubmit}
           />
         ))}
       </ul>

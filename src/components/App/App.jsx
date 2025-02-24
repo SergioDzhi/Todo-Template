@@ -14,7 +14,7 @@ const App = () => {
 
   return (
     <>
-      <NewTaskForm />
+      <NewTaskForm setTodos={setTodos} />
       <ToDoList todos={todos} handleRemove={handleRemove} />
       <Footer />
     </>
