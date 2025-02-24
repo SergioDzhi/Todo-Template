@@ -9,6 +9,8 @@ const NewTaskForm = ({ setTodos }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (newTask.trim() === "") return;
+
     setTodos((todos) => [...todos, newTask]);
     setNewTask("");
   };

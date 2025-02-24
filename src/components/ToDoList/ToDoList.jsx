@@ -1,8 +1,6 @@
 import Task from "../Task/Task";
 
-const ToDoList = (props) => {
-  const { todos, handleRemove, handleSubmit } = props;
-
+const ToDoList = ({ todos, handleRemove, handleSubmit }) => {
   return (
     <section className="main">
       <ul className="todo-list">
