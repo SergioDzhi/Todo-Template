@@ -1,6 +1,11 @@
 import Task from "../Task/Task";
+import PropTypes from "prop-types";
 
-const ToDoList = ({ todoTasks, handleRemove, handleCheck }) => {
+const ToDoList = ({
+  todoTasks,
+  handleRemove = () => {},
+  handleCheck = () => {},
+}) => {
   return (
     <section className="main">
       <ul className="todo-list">
@@ -15,6 +20,12 @@ const ToDoList = ({ todoTasks, handleRemove, handleCheck }) => {
       </ul>
     </section>
   );
+};
+
+ToDoList.propTypes = {
+  todoTasks: PropTypes.instanceOf(Array),
+  handleRemove: PropTypes.func,
+  handleCheck: PropTypes.func,
 };
 
 export default ToDoList;

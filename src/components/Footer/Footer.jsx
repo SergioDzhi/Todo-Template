@@ -1,6 +1,7 @@
 import ToDoFilter from "../ToDoFilter/ToDoFilter";
+import PropTypes from "prop-types";
 
-function Footer({ todos, handleDelCompleted, setStatusTask }) {
+function Footer({ todos = [], handleDelCompleted = () => {}, setStatusTask }) {
   const activeCount = todos.filter((task) => task.done).length;
   const completedCount = todos.length - activeCount;
 
@@ -19,5 +20,10 @@ function Footer({ todos, handleDelCompleted, setStatusTask }) {
     </footer>
   );
 }
+
+Footer.propTypes = {
+  handleDelCompleted: PropTypes.func,
+  todos: PropTypes.instanceOf(Array),
+};
 
 export default Footer;

@@ -1,7 +1,12 @@
 import { formatDistanceToNow } from "date-fns";
-import KG from 'date-fns/locale/en-AU';
+import KG from "date-fns/locale/en-AU";
+import PropTypes from "prop-types";
 
-const Task = ({ handleRemove, todo: { id, done, value, date }, handleCheck }) => {
+const Task = ({
+  handleRemove = () => {},
+  todo: { id, done, value, date },
+  handleCheck = () => {},
+}) => {
   const timeAddTask = formatDistanceToNow(date, {
     includeSeconds: true,
     locale: KG,
@@ -33,6 +38,15 @@ const Task = ({ handleRemove, todo: { id, done, value, date }, handleCheck }) =>
       </div>
     </li>
   );
+};
+
+Task.propTypes = {
+  value: PropTypes.string,
+  date: PropTypes.instanceOf(Date),
+  done: PropTypes.bool,
+  id: PropTypes.number,
+  handleRemove: PropTypes.func,
+  handleCheck: PropTypes.func,
 };
 
 export default Task;
