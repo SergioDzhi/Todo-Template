@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-const NewTaskForm = ({ setTodos }) => {
+let id = 1;
+
+const NewTaskForm = ({ setTodoTasks }) => {
   const [newTask, setNewTask] = useState("");
 
   const handleChangeInput = (event) => {
@@ -10,8 +12,14 @@ const NewTaskForm = ({ setTodos }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (newTask.trim() === "") return;
+    const newObj = {
+      id: id++,
+      value: newTask,
+      done: false,
+      date: Date(),
+    };
 
-    setTodos((todos) => [...todos, newTask]);
+    setTodoTasks((todoTasks) => [...todoTasks, newObj]);
     setNewTask("");
   };
 

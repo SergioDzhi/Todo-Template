@@ -1,30 +1,34 @@
-import { formatDistance } from "date-fns";
-import { useState } from "react";
+import { formatDistanceToNow } from "date-fns";
+import KG from 'date-fns/locale/en-AU';
 
-const Task = ({ handleRemove, todo }) => {
-  const [completed, setCompleted] = useState(false);
-
-  const newFormat = formatDistance(new Date(), new Date(), {
+const Task = ({ handleRemove, todo: { id, done, value, date }, handleCheck }) => {
+  const timeAddTask = formatDistanceToNow(date, {
+    includeSeconds: true,
+    locale: KG,
     addSuffix: true,
   });
 
+  const handleCheckInput = () => {
+    handleCheck(id);
+  };
+
   return (
-    <li className={completed ? "completed" : undefined}>
+    <li className={done ? "completed" : undefined}>
       <div className="view">
         <input
           className="toggle"
           type="checkbox"
-          onChange={(e) => setCompleted(e.target.checked)}
-          checked={completed}
+          onChange={handleCheckInput}
+          checked={done}
         />
         <label htmlFor="checkbox">
-          <span className="description">{todo}</span>
-          <span className="created">created {newFormat} </span>
+          <span className="description">{value}</span>
+          <span className="created">created {timeAddTask} </span>
         </label>
         <button className="icon icon-edit"></button>
         <button
           className="icon icon-destroy"
-          onClick={() => handleRemove(todo)}
+          onClick={() => handleRemove(id)}
         ></button>
       </div>
     </li>

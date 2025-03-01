@@ -1,18 +1,14 @@
-import { useState } from "react";
-
-const ToDoFilter = () => {
-  const [filter, setFilter] = useState("all");
-
+const ToDoFilter = ({ setStatusTask }) => {
   return (
     <ul className="filters">
       <li>
-        <button>All</button>
+        <button onClick={() => setStatusTask("All")}>All</button>
       </li>
       <li>
-        <button>Active</button>
+        <button onClick={() => setStatusTask("Active")}>Active</button>
       </li>
       <li>
-        <button>Completed</button>
+        <button onClick={() => setStatusTask("Completed")}>Completed</button>
       </li>
     </ul>
   );

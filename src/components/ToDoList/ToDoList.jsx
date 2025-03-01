@@ -1,16 +1,15 @@
 import Task from "../Task/Task";
 
-const ToDoList = ({ todos, handleRemove, handleSubmit }) => {
+const ToDoList = ({ todoTasks, handleRemove, handleCheck }) => {
   return (
     <section className="main">
       <ul className="todo-list">
-        {todos.map((todo, index) => (
+        {todoTasks.map((todo) => (
           <Task
-            key={index}
+            key={todo.id}
             handleRemove={handleRemove}
             todo={todo}
-            index={index}
-            onSubmit={handleSubmit}
+            handleCheck={handleCheck}
           />
         ))}
       </ul>
