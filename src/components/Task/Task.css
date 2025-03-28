@@ -6,3 +6,34 @@
   font-weight: 400;
   color: #4d4d4d;
 }
+
+.timer {}
+
+.icon-pause,
+.icon-play {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.icon-pause:after {
+  content: '⏸';
+}
+
+.icon-play:after {
+  content: '▶';
+}
+
+
+
+.label {
+  align-items: baseline;
+  color: gray;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+
+  gap: 5px;
+  height: 24px;
+
+}
