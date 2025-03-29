@@ -1,18 +1,15 @@
 .new-todo {
 
-  display: flex;
-  justify-content: center;
+
   margin: 0;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-  width: 100%;
-  padding: 16px 16px 16px 60px;
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  height: 100%;
+  width: 70%;
   box-sizing: border-box;
   border: none;
-  background-color: white;
   font-style: italic;
   font-weight: 100;
   font-size: 24px;
+  padding: 16px 16px 16px 60px;
 }
 
 h1 {
@@ -29,4 +26,35 @@ h1 {
   color: #111111;
   font-weight: 200;
   color: rgba(66, 12, 12, 0.15);
+}
+
+
+
+
+
+
+.new-todo-form__timer {
+  width: 15%;
+  border: none;
+
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: inherit;
+  line-height: 1.4em;
+
+}
+
+
+.formList {
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+  width: 100%;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 65px;
+
+
+
 }

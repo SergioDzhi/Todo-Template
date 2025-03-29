@@ -4,21 +4,26 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
 const Task = ({
+  isActive,
+  setIsActive,
   handleRemove = () => {},
-  todo: { id, done, value, date },
+  todo: { id, done, value, date, countdown },
   handleCheck = () => {},
 }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedValue, setEditedValue] = useState("");
-  const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+  const [seconds, setSeconds] = useState(countdown || 0);
 
   useEffect(() => {
     let interval = null;
 
     if (isActive) {
       interval = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds + 1);
+        setSeconds((prevSeconds) => {
+          if (countdown !== undefined && countdown > 0) {
+            return prevSeconds > 0 ? prevSeconds - 1 : prevSeconds;
+          } else {
+            return prevSeconds + 1;
+          }
+        });
       }, 1000);
     }
 
@@ -44,23 +49,6 @@ const Task = ({
     handleCheck(id);
   };
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleChange = (e) => {
-    setEditedValue(e.target.value);
-  };
-
-  const handleSave = (e) => {
-    if (e.key === "Enter" && editedValue.trim() !== "") {
-      setIsEditing(false);
-    } else if (e.key === "Escape") {
-      setIsEditing(false);
-      setEditedValue(value);
-    }
-  };
-
   return (
     <li className={done ? "completed" : undefined}>
       <div className="view">
@@ -69,35 +57,23 @@ const Task = ({
           type="checkbox"
           onChange={handleCheckInput}
           checked={done}
-        />{" "}
-        {isEditing ? (
-          <input
-            className="edit"
-            type="text"
-            value={editedValue}
-            onChange={handleChange}
-            onKeyDown={handleSave}
-            autoFocus
-          />
-        ) : (
-          <label>
-            <span className="description">{value}</span>
-            <div className="label">
-              <button
-                className=" icon-play"
-                onClick={() => setIsActive(true)}
-              />
-              <button
-                className=" icon-pause"
-                onClick={() => setIsActive(false)}
-              />
-              {formatTime(seconds)}
-            </div>
+        />
 
-            <span className="created">created {timeAddTask}</span>
-          </label>
-        )}
-        <button className="icon icon-edit" onClick={handleEditClick}></button>
+        <label>
+          <span className="description">{value}</span>
+          <div className="label">
+            <button className=" icon-play" onClick={() => setIsActive(true)} />
+            <button
+              className=" icon-pause"
+              onClick={() => setIsActive(false)}
+            />
+            {formatTime(seconds)}
+          </div>
+
+          <span className="created">created {timeAddTask}</span>
+        </label>
+
+        <button className="icon icon-edit"></button>
         <button
           className="icon icon-destroy"
           onClick={() => handleRemove(id)}
@@ -116,6 +92,8 @@ Task.propTypes = {
   }),
   handleRemove: PropTypes.func,
   handleCheck: PropTypes.func,
+  isActive: PropTypes.bool,
+  setIsActive: PropTypes.func,
 };
 
 export default Task;

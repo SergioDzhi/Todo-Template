@@ -7,7 +7,7 @@ import NewTaskForm from "../NewTaskForm/NewTaskForm";
 const App = () => {
   const [todoTasks, setTodoTasks] = useState([]);
   const [statusTask, setStatusTask] = useState("All");
-
+  const [isActive, setIsActive] = useState(false);
   const showTask = (arr, status) => {
     if (status === "All") return arr;
     if (status === "Active") {
@@ -37,11 +37,13 @@ const App = () => {
 
   return (
     <>
-      <NewTaskForm setTodoTasks={setTodoTasks} />
+      <NewTaskForm setTodoTasks={setTodoTasks} setIsActive={setIsActive} />
       <ToDoList
         todoTasks={showTask(todoTasks, statusTask)}
         handleRemove={handleRemove}
         handleCheck={handleCheck}
+        setIsActive={setIsActive}
+        isActive={isActive}
       />
       <Footer
         todos={todoTasks}

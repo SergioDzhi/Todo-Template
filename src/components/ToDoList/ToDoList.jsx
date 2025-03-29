@@ -2,6 +2,8 @@ import Task from "../Task/Task";
 import PropTypes from "prop-types";
 
 const ToDoList = ({
+  setIsActive,
+  isActive,
   todoTasks,
   handleRemove = () => {},
   handleCheck = () => {},
@@ -11,6 +13,8 @@ const ToDoList = ({
       <ul className="todo-list">
         {todoTasks.map((todo) => (
           <Task
+            setIsActive={setIsActive}
+            isActive={isActive}
             key={todo.id}
             handleRemove={handleRemove}
             todo={todo}
